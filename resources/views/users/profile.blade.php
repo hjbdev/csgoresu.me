@@ -27,12 +27,12 @@
 
                                 @if($user->team_experience)
                                 <h2 class="mt-6 mb-2 text-xl font-semibold">Team Experience</h2>
-                                <div class="whitespace-nowrap">{{ $user->about }}</div>
+                                <div>{!! nl2br(htmlspecialchars($user->team_experience)) !!}</div>
                                 @endif
 
                                 @if($user->about)
                                 <h2 class="mt-6 mb-2 text-xl font-semibold">About</h2>
-                                <div class="whitespace-nowrap">{{ $user->about }}</div>
+                                <div>{!! nl2br(htmlspecialchars($user->about)) !!}</div>
                                 @endif
                             </div>
                             <div>
