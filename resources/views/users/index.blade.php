@@ -136,7 +136,7 @@
                                                 {{ $user->region }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <img src="/img/country-flags/{{ $user->country }}.svg" class="w-8 mx-auto rounded-sm">
+                                                <img src="/img/country-flags/{{ strtolower($user->country) }}.svg" class="w-8 mx-auto rounded-sm">
                                             </td>
                                             <td>
                                                 <a href="/players/{{ $user->hashid }}" class="absolute inset-0"></a>
