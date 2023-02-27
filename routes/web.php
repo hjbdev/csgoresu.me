@@ -18,6 +18,9 @@ use Laravel\Socialite\Facades\Socialite;
 */
 
 Route::get('/', function () {
+    // if (auth()->check()) {
+    return redirect()->to('/players');
+    // }
     return view('welcome');
 });
 
