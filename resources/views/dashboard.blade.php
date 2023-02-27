@@ -5,7 +5,7 @@
                 <div class="md:col-span-2">
                     <div class="p-6 overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <h2 class="text-3xl font-extrabold tracking-tight text-gray-900">
-                            Welcome to CSGOResu.me
+                            UKCS Teamfinder
                         </h2>
                         <p class="mt-4 text-lg text-gray-500">
                             Here you can create a comprehensive profile to send to potential teams, demonstrating your abilities and experience as a player.

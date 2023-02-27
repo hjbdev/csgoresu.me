@@ -32,7 +32,9 @@ class User extends Authenticatable
         'team_experience',
         'roles',
         'country',
-        'region'
+        'region',
+        'show',
+        'age'
     ];
 
     /**
@@ -45,6 +47,7 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'roles' => 'array'
+        'roles' => 'array',
+        'show' => 'boolean'
     ];
 }

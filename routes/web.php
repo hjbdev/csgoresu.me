@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/login', function () {
     return Socialite::driver('steam')->redirect();
-});
+})->name('login');
 
 Route::get('/auth/callback', function () {
     $steamUser = Socialite::driver('steam')->user();
@@ -47,8 +47,11 @@ Route::get('/auth/callback', function () {
 });
 
 Route::get('/players/{user}', [UserController::class, 'profile']);
-Route::get('/profile/edit', [UserController::class, 'editProfile']);
-Route::post('/profile/edit', [UserController::class, 'updateProfile']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile/edit', [UserController::class, 'editProfile']);
+    Route::post('/profile/edit', [UserController::class, 'updateProfile']);
+});
 
 Route::get('/players', [UserController::class, 'index'])->name('players');
 

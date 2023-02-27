@@ -25,7 +25,7 @@
                             </select>
                             <x-supporting-text>You can select multiple with Ctrl + Click</x-supporting-text>
                         </div>
-                        <div>
+                        {{-- <div>
                             <x-label for="region" :value="__('Region*')" />
                             <select id="region" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="region" :value="old('region') ?: $user->region">
                                 <option value="" @if(!(old('region') || $user->region)) selected @endif disabled>Select a region</option>
@@ -36,7 +36,7 @@
                                 <option value="asia" @if((old('region') ?: $user->region) == 'asia') selected @endif>Asia</option>
                                 <option value="africa" @if((old('region') ?: $user->region) == 'africa') selected @endif>Africa</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div>
                             <x-label for="country" :value="__('Country*')" />
                             <select id="country" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="country" :value="old('country') ?: $user->country">
@@ -45,6 +45,10 @@
                                 <option value="{{ $iso }}" @if((old('country') ?: $user->country) == $iso) selected @endif>{{ $country }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div>
+                            <x-label for="age" :value="__('Age')" />
+                            <x-input id="age" class="block w-full mt-1" type="number" max="60" name="age" :value="old('age') ?: $user->age" />
                         </div>
                         <div>
                             <x-label for="mm_rank" :value="__('Matchmaking Rank')" />
@@ -104,9 +108,14 @@
                             <x-supporting-text>Describe your previous team experience, leagues played, achievements, placements etc.</x-supporting-text>
                         </div>
                         <div>
-                            <x-label for="about*" :value="__('About')" />
+                            <x-label for="about" :value="__('About*')" />
                             <x-textarea id="about" class="block w-full mt-1" type="text" name="about" :value="old('about') ?: $user->about" />
                             <x-supporting-text>Explain yourself as a player, give some background information.</x-supporting-text>
+                        </div>
+                        <div>
+                            <x-label for="show" :value="__('Show profile on directory')" />
+                            <x-input id="show" class="mt-1" type="checkbox" name="show" :value="old('show') ?: $user->show ?: 0" />
+                            <x-supporting-text>Your profile won't show on the directory if this box is unchecked, or if your profile hasn't been updated in over a month.</x-supporting-text>
                         </div>
                         @csrf
                         <div class="flex justify-end">

@@ -15,7 +15,7 @@ class UserController extends Controller
             AllowedFilter::exact('region'),
             'roles',
             'mm_rank', 'faceit_rank', 'esea_rank', 'country'
-        ])->whereNotNull('roles')->whereNotNull('about')->paginate(20);
+        ])->whereNotNull('roles')->whereNotNull('about')->orderByDesc('faceit_rank')->where('updated_at', '>', now()->subMonth())->paginate(20);
 
         $mmRanks = [
             "No Rank",
@@ -53,6 +53,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $countries = array(
+            "GB" => "United Kingdom",
             "AF" => "Afghanistan",
             "AL" => "Albania",
             "DZ" => "Algeria",
@@ -301,6 +302,7 @@ class UserController extends Controller
         $user = auth()->user();
 
         $countries = array(
+            "GB" => "United Kingdom",
             "AF" => "Afghanistan",
             "AL" => "Albania",
             "DZ" => "Algeria",
@@ -552,12 +554,14 @@ class UserController extends Controller
             'esportal_url' => 'nullable|url|max:255|starts_with:https://esportal.com/',
             'twitter_url' => 'nullable|url|max:255|starts_with:https://twitter.com/',
             'mm_rank' => 'nullable|numeric|max:18',
+            'age' => 'nullable|numeric|max:60|min:5',
             'team_experience' => 'nullable|string|max:3000',
             'about' => 'nullable|string|max:3000',
             'roles' => 'array|max:20',
             'roles.*' => 'in:In Game Leader,Rifler,Support,Lurker,Entry Fragger,AWPer',
             'country' => 'in:' . implode(',', array_keys($countries)) . '|string|max:4|nullable',
-            'region' => 'string|max:20|in:eu,na,sa,oce,asia,africa|nullable'
+            'region' => 'string|max:20|in:eu,na,sa,oce,asia,africa|nullable',
+            'show' => 'boolean'
         ]);
 
         $user->fill($validated);

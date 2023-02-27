@@ -16,6 +16,7 @@ class AddResumeFieldsToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('faceit_url')->nullable();
             $table->integer('faceit_rank')->nullable();
+            $table->integer('age')->nullable();
             $table->string('esea_url')->nullable();
             $table->string('esea_rank', 2)->nullable();
             $table->string('esl_url')->nullable();
@@ -28,6 +29,7 @@ class AddResumeFieldsToUsers extends Migration
             $table->longText('about')->nullable();
             $table->longText('team_experience')->nullable();
             $table->json('roles')->nullable();
+            $table->boolean('show')->default(false);
         });
     }
 
@@ -49,6 +51,8 @@ class AddResumeFieldsToUsers extends Migration
             $table->dropColumn('about');
             $table->dropColumn('team_experience');
             $table->dropColumn('roles');
+            $table->dropColumn('show');
+            $table->dropColumn('age');
         });
     }
 }
