@@ -15,7 +15,7 @@ class UserController extends Controller
             AllowedFilter::exact('region'),
             'roles',
             'mm_rank', 'faceit_rank', 'esea_rank', 'country'
-        ])->whereNotNull('roles')->whereNotNull('about')->where('show', true)->orderByDesc('faceit_rank')->where('updated_at', '>', now()->subMonth())->paginate(20);
+        ])->whereNotNull('roles')->where('show', true)->orderByDesc('faceit_rank')->where('updated_at', '>', now()->subMonth())->paginate(20);
 
         $mmRanks = [
             "No Rank",
