@@ -561,8 +561,13 @@ class UserController extends Controller
             'roles.*' => 'in:In Game Leader,Rifler,Support,Lurker,Entry Fragger,AWPer',
             'country' => 'in:' . implode(',', array_keys($countries)) . '|string|max:4|nullable',
             'region' => 'string|max:20|in:eu,na,sa,oce,asia,africa|nullable',
-            'show' => 'boolean'
+            'show' => 'boolean|nullable'
         ]);
+
+        if (!isset($validated['show'])) {
+            $validated['show'] = false;
+        }
+
 
         $user->fill($validated);
         $user->save();

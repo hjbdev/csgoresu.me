@@ -114,7 +114,7 @@
                         </div>
                         <div>
                             <x-label for="show" :value="__('Show profile on directory')" />
-                            <x-input id="show" class="mt-1" type="checkbox" name="show" :value="old('show') ?: $user->show ?: 0" />
+                            <input id="show" class="mt-1 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="checkbox" name="show" {{ (old('show', false) ?: $user->show) ? 'checked' : '' }} />
                             <x-supporting-text>Your profile won't show on the directory if this box is unchecked, or if your profile hasn't been updated in over a month.</x-supporting-text>
                         </div>
                         @csrf
