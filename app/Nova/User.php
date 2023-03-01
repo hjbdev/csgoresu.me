@@ -61,10 +61,10 @@ class User extends Resource
             Text::make('Steam Id')
                 ->rules('required', 'max:255'),
 
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', Rules\Password::defaults())
-                ->updateRules('nullable', Rules\Password::defaults()),
+//             Password::make('Password')
+//                 ->onlyOnForms()
+//                 ->creationRules('required', Rules\Password::defaults())
+//                 ->updateRules('nullable', Rules\Password::defaults()),
 
             Text::make('Country')
                 ->rules('string', 'max:4', 'nullable'),
