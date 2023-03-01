@@ -101,7 +101,12 @@ class User extends Resource
 
             MultiSelect::make('Roles')
                 ->options([
-                    'In Game Leader','Rifler','Support','Lurker','Entry Fragger','AWPer'
+                    'In Game Leader' => 'In Game Leader',
+                    'Rifler' => 'Rifler',
+                    'Support'=> 'Support',
+                    'Lurker' => 'Lurker',
+                    'Entry Fragger' => 'Entry Fragger',
+                    'AWPer' => 'AWPer'
                 ])
                 ->rules('required'),
             
