@@ -57,6 +57,9 @@ class User extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+            
+            Text::make('Steam Id')
+                ->rules('required', 'max:255'),
 
             Password::make('Password')
                 ->onlyOnForms()
