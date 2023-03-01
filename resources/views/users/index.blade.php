@@ -46,7 +46,7 @@
                                 </select>
                                 <x-supporting-text>You can select multiple with Ctrl + Click</x-supporting-text>
                             </div>
-                            <div>
+                            {{-- <div>
                                 <x-label for="region" :value="__('Region*')" />
                                 <select id="region" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     name="filter[region]">
@@ -58,7 +58,7 @@
                                     <option value="asia" @if($region=='asia' ) selected @endif>Asia</option>
                                     <option value="africa" @if($region=='africa' ) selected @endif>Africa</option>
                                 </select>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="flex justify-end gap-6 mt-6">
                             <a href="/players"
@@ -70,7 +70,7 @@
                     </form>
                 </div>
             </div>
-            <div class="bg-white shadow-sm sm:rounded-lg">
+            <div class="max-w-7xl mx-auto bg-white shadow-sm sm:rounded-lg">
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -78,15 +78,15 @@
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
                                         <tr>
-                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            <th scope="col" class="w-32 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 Name
                                             </th>
 
-                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            <th scope="col" class="w-16 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 Age
                                             </th>
-                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                FaceIT Rank
+                                            <th scope="col" class="px-6 w-16 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                FACEIT
                                             </th>
                                             {{-- <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 ESEA Rank
@@ -95,15 +95,15 @@
                                                 MM Rank
                                             </th> --}}
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                Role
+                                                Role(s)
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 Team Experience
                                             </th>
-                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            {{-- <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 Region
-                                            </th>
-                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                            </th> --}}
+                                            <th scope="col" class="w-16 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 Country
                                             </th>
                                             <th></th>
@@ -112,7 +112,7 @@
                                     <tbody class="bg-white divide-y divide-gray-200">
                                         @foreach($users->items() as $user)
                                         <tr class="relative cursor-pointer">
-                                            <td class="px-6 py-4 whitespace-nowrap">
+                                            <td class="px-6 py-2 whitespace-nowrap">
                                                 <div class="text-sm font-medium text-gray-900">
                                                     {{ $user->name }}
                                                 </div>
@@ -120,40 +120,40 @@
                                                     jane.cooper@example.com
                                                 </div> --}}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
+                                            <td class="px-6 py-2 whitespace-nowrap">
                                                 <div class="text-sm font-medium text-gray-900">
                                                     {{ $user->age }}
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
+                                            <td class="px-6 py-2 whitespace-nowrap">
                                                 <div class="text-sm font-medium text-gray-900">
                                                     {{ $user->faceit_rank }}
                                                 </div>
                                             </td>
-                                            {{-- <td class="px-6 py-4 whitespace-nowrap">
+                                            {{-- <td class="px-6 py-2 whitespace-nowrap">
                                                 <div class="text-sm font-medium text-gray-900">
                                                     {{ $user->esea_rank }}
                                                 </div>
                                             </td> --}}
-                                            {{-- <td class="px-6 py-4 whitespace-nowrap">
+                                            {{-- <td class="px-6 py-2 whitespace-nowrap">
                                                 <div class="text-sm font-medium text-gray-900">
                                                     {{ $mmRanks[$user->mm_rank ?: 0] }}
                                                 </div>
                                             </td> --}}
-                                            <td class="px-6 py-4 whitespace-nowrap">
+                                            <td class="px-6 py-2 whitespace-nowrap">
                                                 @foreach ($user->roles as $role)
                                                 <span class="inline-flex px-2 text-xs font-semibold leading-5 text-gray-800 bg-gray-100 rounded-full">
                                                     {{ $role }}
                                                 </span>
                                                 @endforeach
                                             </td>
-                                            <td class="px-6 py-4 text-sm uppercase whitespace-nowrap">
+                                            <td class="px-6 py-2 text-sm uppercase whitespace-nowrap">
                                                 {{ Str::limit($user->team_experience, 100) }}
                                             </td>
-                                            <td class="px-6 py-4 text-sm uppercase whitespace-nowrap">
+                                            {{-- <td class="px-6 py-2 text-sm uppercase whitespace-nowrap">
                                                 {{ $user->region }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
+                                            </td> --}}
+                                            <td class="px-6 py-2 whitespace-nowrap">
                                                 <img src="/img/country-flags/{{ strtolower($user->country) }}.svg" class="w-8 mx-auto rounded-sm">
                                             </td>
                                             <td>
