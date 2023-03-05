@@ -15,7 +15,13 @@ class UserController extends Controller
             AllowedFilter::exact('region'),
             'roles',
             'mm_rank', 'faceit_rank', 'esea_rank', 'country'
-        ])->whereNotNull('roles')->where('show', true)->orderByDesc('faceit_rank')->where('updated_at', '>', now()->subMonth())->paginate(20);
+        ])->whereNotNull('roles')->whereNotIn('steam_id', [
+            '76561198080330700',
+            '76561198079662029',
+            '76561198158594990',
+            '76561198090815918',
+            '76561198079662029'
+        ])->where('show', true)->orderByDesc('faceit_rank')->where('updated_at', '>', now()->subMonth())->paginate(60);
 
         $mmRanks = [
             "No Rank",

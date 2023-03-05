@@ -147,7 +147,7 @@
                                                 </span>
                                                 @endforeach
                                             </td>
-                                            <td class="px-6 py-2 text-sm uppercase whitespace-nowrap">
+                                            <td class="px-6 py-2 text-sm whitespace-nowrap">
                                                 {{ Str::limit($user->team_experience, 100) }}
                                             </td>
                                             {{-- <td class="px-6 py-2 text-sm uppercase whitespace-nowrap">
